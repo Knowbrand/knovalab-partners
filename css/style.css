@@ -1,0 +1,73 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
+body{
+background:#0b0b0b;
+color:white;
+min-height:100vh;
+}
+
+nav{
+height:80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
+border-bottom:1px solid #1f1f1f;
+}
+
+.logo{
+font-size:18px;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.profile img{
+width:42px;
+height:42px;
+border-radius:50%;
+}
+
+.hero{
+padding:50px 40px;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.hero p{
+color:#888;
+}
+
+.table-section{
+padding:0 40px 40px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#111;
+border-radius:16px;
+overflow:hidden;
+}
+
+th{
+text-align:left;
+padding:18px;
+background:#141414;
+}
+
+td{
+padding:18px;
+border-top:1px solid #1f1f1f;
+}
+
+tr:hover{
+background:#161616;
+}
