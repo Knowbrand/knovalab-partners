@@ -1,64 +1,69 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbwWlyNpAWLcjQmwHzi6fxhWmem35KmLn2hsluaB_Ph1BWYAJ2seSChtluEJYDvWz0OW4w/exec";
-
-const table = document.getElementById("leadTable");
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwWlyNpAWLcjQmwHzi6fxhWmem35KmLn2hsluaB_Ph1BWYAJ2seSChtluEJYDvWz0OW4w/exec";
 
 fetch(API_URL)
-  .then(response => response.json())
-  .then(data => {
+.then(response => response.json())
+.then(data => {
+
+    const table = document.getElementById("leadTable");
 
     table.innerHTML = "";
 
-    data.forEach((row, index) => {
+    data.forEach((row) => {
 
-      const business =
-        row["Business Name"] ||
-        row["Business Name "] ||
-        "";
+        const sr =
+            row["Sr No"] ||
+            row["Sr No "] ||
+            "";
 
-      const number =
-        row["Number"] ||
-        row["Number "] ||
-        "";
+        const business =
+            row["Business Name"] ||
+            row["Business Name "] ||
+            "";
 
-      const country =
-        row["Country"] ||
-        row["Country "] ||
-        "";
+        const number =
+            row["Number"] ||
+            row["Number "] ||
+            "";
 
-      const disposition =
-        row["Call Disposition"] ||
-        row["Call Disposition "] ||
-        "";
+        const country =
+            row["Country"] ||
+            row["Country "] ||
+            "";
 
-      const notes =
-        row["Notes"] ||
-        row["Notes "] ||
-        "";
+        const disposition =
+            row["Call Disposition"] ||
+            row["Call Disposition "] ||
+            "";
 
-      table.innerHTML += `
-        <tr>
-          <td>${row["Sr No"] || ""}</td>
-          <td>${business}</td>
-          <td>${number}</td>
-          <td>${country}</td>
+        const notes =
+            row["Notes"] ||
+            row["Notes "] ||
+            "";
 
-          <td>
-            <select>
-              <option value="" ${disposition === "" ? "selected" : ""}>Select</option>
-              <option value="Not Called" ${disposition === "Not Called" ? "selected" : ""}>Not Called</option>
-              <option value="Interested" ${disposition === "Interested" ? "selected" : ""}>Interested</option>
-              <option value="Follow Up" ${disposition === "Follow Up" ? "selected" : ""}>Follow Up</option>
-              <option value="Not Interested" ${disposition === "Not Interested" ? "selected" : ""}>Not Interested</option>
-              <option value="Wrong Number" ${disposition === "Wrong Number" ? "selected" : ""}>Wrong Number</option>
-            </select>
-          </td>
+        table.innerHTML += `
+            <tr>
+                <td>${sr}</td>
+                <td>${business}</td>
+                <td>${number}</td>
+                <td>${country}</td>
 
-          <td>${notes}</td>
-        </tr>
-      `;
+                <td>
+                    <select>
+                        <option ${disposition === "" ? "selected" : ""}>Select</option>
+                        <option ${disposition === "Interested" ? "selected" : ""}>Interested</option>
+                        <option ${disposition === "Follow Up" ? "selected" : ""}>Follow Up</option>
+                        <option ${disposition === "Not Interested" ? "selected" : ""}>Not Interested</option>
+                        <option ${disposition === "Wrong Number" ? "selected" : ""}>Wrong Number</option>
+                    </select>
+                </td>
+
+                <td>${notes}</td>
+            </tr>
+        `;
     });
 
-  })
-  .catch(error => {
+})
+.catch(error => {
     console.error(error);
-  });
+});
