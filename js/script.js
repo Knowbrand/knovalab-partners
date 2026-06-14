@@ -7,17 +7,20 @@ fetch(API_URL)
 
 const table = document.getElementById("leadTable");
 
-data.forEach(row => {
-
+data.forEach((row,index) => {
+  
 table.innerHTML += `
-<tr>
-<td>${row["Sr No"] || ""}</td>
-<td>${row["Business Name"] || ""}</td>
-<td>${row["Number"] || ""}</td>
-<td>${row["Country"] || ""}</td>
-<td>${row["Call Disposition"] || ""}</td>
-<td>${row["Notes"] || ""}</td>
-</tr>
+
+<td>
+<select onchange="updateDisposition(${index + 2}, this.value)">
+    <option value="">Select</option>
+    <option value="Not Called">Not Called</option>
+    <option value="Interested">Interested</option>
+    <option value="Follow Up">Follow Up</option>
+    <option value="Not Interested">Not Interested</option>
+    <option value="Wrong Number">Wrong Number</option>
+</select>
+</td>
 `;
 
 });
