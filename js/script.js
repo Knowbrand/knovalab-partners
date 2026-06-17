@@ -67,3 +67,14 @@ fetch(API_URL)
 .catch(error => {
     console.error(error);
 });
+fetch(API_URL)
+.then(response => response.json())
+.then(data => {
+
+    console.log("FULL DATA:", data);
+    console.log("FIRST ROW:", data[0]);
+
+    const table = document.getElementById("leadTable");
+
+    // rest of your code...
+});
