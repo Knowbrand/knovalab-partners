@@ -9,72 +9,32 @@ fetch(API_URL)
 
     table.innerHTML = "";
 
-    data.forEach((row) => {
-
-        const sr =
-            row["Sr No"] ||
-            row["Sr No "] ||
-            "";
-
-        const business =
-            row["Business Name"] ||
-            row["Business Name "] ||
-            "";
-
-        const number =
-            row["Number"] ||
-            row["Number "] ||
-            "";
-
-        const country =
-            row["Country"] ||
-            row["Country "] ||
-            "";
-
-        const disposition =
-            row["Call Disposition"] ||
-            row["Call Disposition "] ||
-            "";
-
-        const notes =
-            row["Notes"] ||
-            row["Notes "] ||
-            "";
+    data.forEach((row,index) => {
 
         table.innerHTML += `
-            <tr>
-                <td>${sr}</td>
-                <td>${business}</td>
-                <td>${number}</td>
-                <td>${country}</td>
+        <tr>
+            <td>${row["Sr No"]}</td>
+            <td>${row["Business Name"]}</td>
+            <td>${row["Number"]}</td>
+            <td>${row["Country"]}</td>
 
-                <td>
-                    <select>
-                        <option ${disposition === "" ? "selected" : ""}>Select</option>
-                        <option ${disposition === "Interested" ? "selected" : ""}>Interested</option>
-                        <option ${disposition === "Follow Up" ? "selected" : ""}>Follow Up</option>
-                        <option ${disposition === "Not Interested" ? "selected" : ""}>Not Interested</option>
-                        <option ${disposition === "Wrong Number" ? "selected" : ""}>Wrong Number</option>
-                    </select>
-                </td>
+            <td>
+                <select>
+                    <option value="">Select</option>
+                    <option value="Not Called">Not Called</option>
+                    <option value="Interested">Interested</option>
+                    <option value="Follow Up">Follow Up</option>
+                    <option value="Not Interested">Not Interested</option>
+                    <option value="Wrong Number">Wrong Number</option>
+                </select>
+            </td>
 
-                <td>${notes}</td>
-            </tr>
+            <td>${row["Notes"]}</td>
+        </tr>
         `;
     });
 
 })
 .catch(error => {
     console.error(error);
-});
-fetch(API_URL)
-.then(response => response.json())
-.then(data => {
-
-    console.log("FULL DATA:", data);
-    console.log("FIRST ROW:", data[0]);
-
-    const table = document.getElementById("leadTable");
-
-    // rest of your code...
 });
