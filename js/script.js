@@ -64,21 +64,24 @@ fetch(API_URL)
 // UPDATE DISPOSITION
 function updateDisposition(row, disposition) {
 
-    const formData = new FormData();
-
-    formData.append("row", row);
-    formData.append("disposition", disposition);
+    console.log("Sending:", row, disposition);
 
     fetch(API_URL, {
         method: "POST",
-        body: formData
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            row: row,
+            disposition: disposition
+        })
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
         console.log("Success:", data);
     })
     .catch(error => {
-        console.error("Error:", error);
+        console.error("Update Error:", error);
     });
 
 }
